@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/universityNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:letterSpacing="0.01"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/departmentNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:singleLine="true"
+            app:chipSpacing="8dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/cityChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şehir"
+                android:textColor="@color/black"
+                app:chipBackgroundColor="@color/chip_bg"
+                app:chipStrokeColor="@color/chip_stroke"
+                app:chipStrokeWidth="1dp"
+                app:chipCornerRadius="16dp"
+                app:ensureMinTouchTargetSize="false"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/typeChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tür"
+                android:textColor="@color/black"
+                app:chipBackgroundColor="@color/chip_bg"
+                app:chipStrokeColor="@color/chip_stroke"
+                app:chipStrokeWidth="1dp"
+                app:chipCornerRadius="16dp"
+                app:ensureMinTouchTargetSize="false"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/quotaChip"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kontenjan"
+                android:textColor="@color/black"
+                app:chipBackgroundColor="@color/chip_bg"
+                app:chipStrokeColor="@color/chip_stroke"
+                app:chipStrokeWidth="1dp"
+                app:chipCornerRadius="16dp"
+                app:ensureMinTouchTargetSize="false"/>
+        </com.google.android.material.chip.ChipGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Son Yerleşen:"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/lastYearScoreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Sıralama:"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/lastYearRankText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/reasonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="#616161"
+            android:textSize="13sp"
+            android:maxLines="3"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

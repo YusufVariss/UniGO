@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home"
+        android:title="Ana Sayfa"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_universities"
+        android:icon="@drawable/ic_school"
+        android:title="Üniversiteler"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_programs"
+        android:icon="@drawable/ic_menu_book"
+        android:title="Bölümler"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_open_education"
+        android:icon="@drawable/ic_school"
+        android:title="Açık Öğretim"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Ayarlar"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/nav_score_calculator"
+        android:icon="@drawable/ic_calculator"
+        android:title="Puan Hesaplama" />
+</menu>

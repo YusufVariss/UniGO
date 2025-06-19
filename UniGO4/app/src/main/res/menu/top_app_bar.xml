@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_universities"
+        android:icon="@drawable/ic_school"
+        android:title="Üniversiteler"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_two_year"
+        android:icon="@drawable/ic_two_year"
+        android:title="2 Yıllık Bölümler"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_four_year"
+        android:icon="@drawable/ic_four_year"
+        android:title="4 Yıllık Bölümler"
+        app:showAsAction="ifRoom" />
+</menu>

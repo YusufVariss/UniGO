@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E3F2FD">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="UniGO"
+        app:titleTextColor="@android:color/black"
+        app:navigationIcon="@drawable/ic_back"
+        app:navigationIconTint="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <RadioGroup
+            android:id="@+id/departmentTypeRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/allTypesRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tümü"
+                android:textColor="@android:color/black"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/twoYearRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 Yıllık"
+                android:textColor="@android:color/black" />
+
+            <RadioButton
+                android:id="@+id/fourYearRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 Yıllık"
+                android:textColor="@android:color/black" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/openEducationCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Açıköğretim"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/departmentsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp" />
+
+</LinearLayout>

@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="Puan Hesaplama"
+                app:titleTextColor="@color/white"
+                app:navigationIcon="@drawable/ic_back"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/appbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Sınav Yılı Seçimi -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sınav Yılı"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioGroup
+                    android:id="@+id/sinavYiliGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/radio_group_background"
+                    android:padding="8dp">
+
+                    <RadioButton
+                        android:id="@+id/sinavYili2025"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2025"
+                        android:textColor="#000000"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/sinavYili2024"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2024"
+                        android:textColor="#000000"/>
+
+                    <RadioButton
+                        android:id="@+id/sinavYili2023"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2023"
+                        android:textColor="#000000"/>
+                </RadioGroup>
+
+                <!-- TYT Puanları -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TYT Puanları"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Türkçe (40 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Türkçe Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytTurkceDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Türkçe Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytTurkceYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tytTurkceNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/40"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sosyal (20 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Sosyal Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytSosyalDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Sosyal Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytSosyalYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tytSosyalNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/20"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matematik (40 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Matematik Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytMatematikDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Matematik Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytMatematikYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tytMatematikNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/40"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fen (20 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Fen Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytFenDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="TYT Fen Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tytFenYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tytFenNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/20"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <!-- AYT Sayısal -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AYT Sayısal"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matematik (40 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Matematik Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytMatematikDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Matematik Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytMatematikYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytMatematikNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/40"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fizik (14 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Fizik Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytFizikDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Fizik Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytFizikYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytFizikNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/14"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kimya (13 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Kimya Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytKimyaDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Kimya Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytKimyaYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytKimyaNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/13"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Biyoloji (13 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Biyoloji Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytBiyolojiDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Biyoloji Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytBiyolojiYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytBiyolojiNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/13"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <!-- AYT Sözel -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AYT Sözel"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Türk Dili ve Edebiyatı (24 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Edebiyat Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytEdebiyatDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Edebiyat Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytEdebiyatYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytEdebiyatNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/24"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarih-1 (10 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Tarih-1 Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytTarih1Dogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Tarih-1 Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytTarih1Yanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytTarih1NetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/10"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coğrafya-1 (6 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Coğrafya-1 Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytCografya1Dogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Coğrafya-1 Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytCografya1Yanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytCografya1NetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/6"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tarih-2 (11 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Tarih-2 Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytTarih2Dogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Tarih-2 Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytTarih2Yanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytTarih2NetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/11"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coğrafya-2 (11 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Coğrafya-2 Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytCografya2Dogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Coğrafya-2 Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytCografya2Yanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytCografya2NetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/11"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Felsefe (12 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Felsefe Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytFelsefeDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Felsefe Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytFelsefeYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytFelsefeNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/12"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Din Kültürü (6 Soru)"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Din Kültürü Doğru">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytDinDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Din Kültürü Yanlış">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytDinYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytDinNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/6"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <!-- AYT Dil -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AYT Dil"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Dil Doğru (80)">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytDilDogru"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="AYT Dil Yanlış (80)">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/aytDilYanlis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|textNoSuggestions"
+                        android:textColor="@android:color/black"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/aytDilNetOran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Net: 0.0/80"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="4dp"/>
+
+                <!-- Diploma Notu ve OBP -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diploma Notu ve OBP"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/diplomaNotuLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Diploma Notu"
+                    android:background="@android:color/white"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxBackgroundColor="@android:color/white">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/diplomaNotuInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal|textNoSuggestions"
+                        android:digits="0123456789,."
+                        android:maxLength="5"
+                        android:textColor="@android:color/black"
+                        android:background="@android:color/white"
+                        android:importantForAutofill="no"
+                        android:autofillHints=""
+                        android:importantForContentCapture="no"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/diplomaNotuBilgi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Not: Diploma notunuzu 50-100 arası girin (örn: 80 veya 80,5)"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Sonuçlar -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sonuçlar"
+                    android:textAppearance="@style/TextAppearance.App.Headline6"
+                    android:textColor="#000000"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:id="@+id/sonucTyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TYT: -"
+                    android:textAppearance="@style/TextAppearance.App.Body1"/>
+
+                <TextView
+                    android:id="@+id/sonucSay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SAY: -"
+                    android:textAppearance="@style/TextAppearance.App.Body1"/>
+
+                <TextView
+                    android:id="@+id/sonucEa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EA: -"
+                    android:textAppearance="@style/TextAppearance.App.Body1"/>
+
+                <TextView
+                    android:id="@+id/sonucSoz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SÖZ: -"
+                    android:textAppearance="@style/TextAppearance.App.Body1"/>
+
+                <TextView
+                    android:id="@+id/sonucDil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DİL: -"
+                    android:textAppearance="@style/TextAppearance.App.Body1"/>
+
+                <!-- Butonlar -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/hesaplaButton"
+                    style="@style/Widget.App.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Hesapla" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/temizleButton"
+                    style="@style/Widget.App.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Temizle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/universiteOnerButton"
+                    style="@style/Widget.App.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Üniversite Öner" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

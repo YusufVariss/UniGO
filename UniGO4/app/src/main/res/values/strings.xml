@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UniGO</string>
+    <string name="program_name">Program Adı</string>
+    <string name="university_name">Üniversite Adı</string>
+    <string name="location">Konum</string>
+    <string name="tyt_score">TYT Puanı</string>
+    <string name="ayt_score">AYT Puanı</string>
+    <string name="acceptance_rate">Yerleşme Oranı</string>
+    <string name="select_city">Şehir Seçin</string>
+    <string name="all_cities">Tüm Şehirler</string>
+    <string name="ai_recommendations_subtitle">Puanlarınıza göre önerilen üniversiteler</string>
+    <string name="loading">Yükleniyor...</string>
+    <string name="no_recommendations">Öneri bulunamadı</string>
+    <string name="enter_scores">Lütfen puanlarınızı girin</string>
+    <string name="invalid_scores">Geçersiz puan değerleri</string>
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>
+    <string name="match_score_format">Eşleşme: %.1f%%</string>
+    <string name="gemini_api_key">AIzaSyB7XcjX2VTo-RKSvu-z9V21Xf53Kgk_EcI</string>
+</resources>
